@@ -19,7 +19,7 @@ namespace Day2
         public int Max { get; }
         public char Character { get; }
         public string Pass { get; }
-
+        //"3-6 s: ssdsssss" (15)
         public Password(string input) //input = 2-12 k: kkktrkwrbtck
         {
             var numberDividerPos = input.IndexOf('-');
@@ -28,13 +28,18 @@ namespace Day2
             Min = Int32.Parse(input.Substring(0,numberDividerPos));
             Max = Int32.Parse(input.Substring(numberDividerPos+1, passwordDividerPos-numberDividerPos-2));
             Character = input[passwordDividerPos-1];
-            Pass = input.Substring(passwordDividerPos +1, input.Length-passwordDividerPos-1);
+            Pass = input.Substring(passwordDividerPos +2, input.Length-passwordDividerPos-2);
         }
 
         public bool IsValid()
         {
-            var count = Pass.Count(f => f == Character);
-            return ((count >= Min) && (count <= Max));
+            if (Max > Pass.Length) return false;
+            return ((Pass[Min-1] == Character ) ^ (Pass[Max - 1] == Character));
+        }
+
+        public override string ToString()
+        {
+            return $"{Min}-{Max} {Character}: {Pass} {this.IsValid()}";
         }
     }
 }
