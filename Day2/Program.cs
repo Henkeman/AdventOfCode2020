@@ -19,8 +19,11 @@ namespace Day2
         public int Max { get; }
         public char Character { get; }
         public string Pass { get; }
-        //"3-6 s: ssdsssss" (15)
-        public Password(string input) //input = 2-12 k: kkktrkwrbtck
+
+        //Example input:
+        //"3-6 s: ssdsssss"
+        //"2-12 k: kkktrkwrbtck"
+        public Password(string input)
         {
             var numberDividerPos = input.IndexOf('-');
             var passwordDividerPos = input.IndexOf(':');
