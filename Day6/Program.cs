@@ -17,20 +17,33 @@ namespace Day6
         {
             int count = 0;
             var set = new HashSet<char>();
+            var firstLine = true;
 
             foreach (var line in input)
             {
                 if (line.Trim().Length > 0)
                 {
-                    foreach (var ch in line)
+                    if (firstLine)
                     {
-                        set.Add(ch);
+                        foreach (var ch in line) set.Add(ch);
+                        firstLine = false;
+                    }
+                    else
+                    {
+                        foreach (var ch in set)
+                        {
+                            if (!line.Contains(ch))
+                            {
+                                set.Remove(ch);
+                            }
+                        }
                     }
                 }
                 else
                 {
                     count += set.Count;
                     set.Clear();
+                    firstLine = true;
                 }
             }
             count += set.Count;
