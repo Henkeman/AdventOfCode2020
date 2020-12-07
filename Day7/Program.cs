@@ -20,13 +20,13 @@ namespace Day7
             Console.WriteLine(c);
         }
 
-        private static Dictionary<string, List<(int, string)>> GetBagDictionary(string[] input)
+        private static Dictionary<string, Dictionary<string, int>> GetBagDictionary(string[] input)
         {
-            var dict = new Dictionary<string, List<(int, string)>>();
+            var dict = new Dictionary<string, Dictionary<string, int>>();
             foreach (var row in input)
             {
                 var bagrow = row.Replace(" bags", "").Replace(" bag", "").Replace(".", ""); //row cleanup
-                var bagContent = new List<(int, string)>();
+                var bagContent = new Dictionary<string, int>();
 
                 var bagSplit = bagrow.Split(" contain ");
                 var bagName = bagSplit[0];
@@ -39,44 +39,12 @@ namespace Day7
                         var pos = item.IndexOf(' ');
                         var count = Int32.Parse(item.Substring(0, pos));
                         var color = item.Substring(pos).Trim();
-                        bagContent.Add((count, color));
+                        bagContent.Add(color, count);
                     }
                 }
                 dict.Add(bagName, bagContent);
             }
             return dict;
-        }
-    }
-
-    class Bag
-    {
-        public string Color { get; }
-        public List<(int, string)> ContainedBags { get; }
-        private List<Bag> _source;
-
-        public Bag(string color, List<(int, string)> bags, List<Bag> source)
-        {
-            Color = color;
-            ContainedBags = bags;
-            _source = source;
-        }
-
-        public bool Contains(string search)
-        {
-            if (ContainedBags.Any(s => s.Item2 == search)) return true;
-
-            List<Bag> searchBags = new List<Bag>();
-            foreach (var bag in ContainedBags)
-            {
-                searchBags.Add(_source.Find(c => c.Color == search));
-            }
-
-            return searchBags.Any(b => b.Contains(search));
-        }
-
-        public Bag Search(string name)
-        {
-            return _source.Find(b => b.Color == name);
         }
     }
 }
