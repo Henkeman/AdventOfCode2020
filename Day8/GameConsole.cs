@@ -31,6 +31,11 @@ namespace Day8
         {
             while (!InstructionsRun.Contains(Pointer))
             {
+                if (Pointer < 0 || Pointer >= Instructions.Length)
+                {
+                    return false;
+                }
+
                 InstructionsRun.Add(Pointer);
 
                 var instruction = Instructions[Pointer];
@@ -50,35 +55,29 @@ namespace Day8
                     default:
                         break;
                 }
+                if (Pointer >= Instructions.Length) return true;
             }
-            return (Pointer > Instructions.Length);
+            return false;
         }
         public void FixBoot()
         {
-            try
+            int fixPos = 0;
+            var finishedRun = false;
+            while (!finishedRun)
             {
-                int fixPos = 0;
-                var finishedRun = false;
-                while (!finishedRun)
-                {
-                    Reset();
-                    Instructions[fixPos].Fix();
-                    fixPos++;
-                    
-                    finishedRun = Boot();
-                }
-            }
-            catch (Exception ex)
-            {
+                Reset();
+                Instructions[fixPos].Fix();
+                fixPos++;
 
+                finishedRun = Boot();
             }
         }
-        public void Reset()
-        {
-            InstructionsRun.Clear();
-            Accumulator = 0;
-            Pointer = 0;
-            Instructions = ParseInstructions(_originalInstructions);
-        }
+    public void Reset()
+    {
+        InstructionsRun.Clear();
+        Accumulator = 0;
+        Pointer = 0;
+        Instructions = ParseInstructions(_originalInstructions);
     }
+}
 }
