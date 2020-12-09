@@ -12,11 +12,6 @@ namespace Day7
 
         public BagFinder(string[] input)
         {
-            AllBags = GetBagDictionary(input);
-        }
-
-        private Dictionary<string, List<Bag>> GetBagDictionary(string[] input)
-        {
             var dict = new Dictionary<string, List<Bag>>();
             foreach (var row in input)
             {
@@ -39,12 +34,14 @@ namespace Day7
                 }
                 dict.Add(bagName, bagContent);
             }
-            return dict;
+            AllBags = dict;
         }
+
+
         private bool FindBag(string bag, string color)
         {
             var bagQueue = new Queue<Bag>();
-            GetChildBags(bag).ToList().ForEach(bagQueue.Enqueue);
+            GetChildBagsFromColor(bag).ToList().ForEach(bagQueue.Enqueue);
 
             while (bagQueue.Count > 0)
             {
@@ -55,14 +52,14 @@ namespace Day7
                 }
                 else
                 {
-                    GetChildBags(queuedBag.Color).ToList().ForEach(bagQueue.Enqueue);
+                    GetChildBagsFromColor(queuedBag.Color).ToList().ForEach(bagQueue.Enqueue);
                 }
             }
 
             return false;
         }
 
-        private List<Bag> GetChildBags(string color)
+        private List<Bag> GetChildBagsFromColor(string color)
         {
             AllBags.TryGetValue(color, out var childBags);
             return childBags;
@@ -78,6 +75,18 @@ namespace Day7
                 {
                     count++;
                 }
+            }
+
+            return count;
+        }
+        internal Int64 CountAllBagsIn(string color)
+        {
+            Int64 count = 1;
+            var childBags = GetChildBagsFromColor(color).ToList();
+
+            foreach (var bag in childBags)
+            {
+                count += bag.Count * CountAllBagsIn(bag.Color);
             }
 
             return count;
