@@ -16,5 +16,17 @@ namespace Day8
             Operation = instruction[0].Trim();
             Argument = Int32.Parse(instruction[1].Replace("+", "").Trim());
         }
+
+        public void Fix()
+        {
+            if (Operation.Contains("nop"))
+            {
+                Operation = "jmp";
+            }
+            else if (Operation.Contains("jmp"))
+            {
+                Operation = "nop";
+            }
+        }
     }
 }

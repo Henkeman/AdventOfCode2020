@@ -9,7 +9,7 @@ namespace Day8
         {
             var input = File.ReadAllLines("input.txt");
             var gameConsole = new GameConsole(input);
-            gameConsole.Boot();
+            gameConsole.FixBoot();
             Console.WriteLine(gameConsole.Accumulator);
         }
     }

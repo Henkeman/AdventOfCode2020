@@ -37,5 +37,18 @@ namespace Day8Tests
             // Assert
             Assert.AreEqual(5, actual);
         }
+
+        [Test]
+        public void Part2_GameConsoleBoot_Acc_Should_Be_8()
+        {
+            // Arrange
+
+            // Act
+            gameConsole.FixBoot();
+
+            var actual = gameConsole.Accumulator;
+            // Assert
+            Assert.AreEqual(8, actual);
+        }
     }
 }
