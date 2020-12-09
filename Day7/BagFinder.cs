@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Day7
 {
-    class BagFinder
+    public class BagFinder
     {
         public Dictionary<string, List<Bag>> AllBags { get; internal set; }
 
@@ -65,7 +65,7 @@ namespace Day7
             return childBags;
         }
 
-        internal int CountInAllBags(string color)
+        public int CountInAllBags(string color)
         {
             var count = 0;
 
@@ -79,7 +79,7 @@ namespace Day7
 
             return count;
         }
-        internal Int64 CountAllBagsIn(string color)
+        public Int64 CountAllBagsIn(string color)
         {
             Int64 count = 1;
             var childBags = GetChildBagsFromColor(color).ToList();
