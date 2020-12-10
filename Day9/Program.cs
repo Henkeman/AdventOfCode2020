@@ -8,6 +8,9 @@ namespace Day9
         static void Main(string[] args)
         {
             var input = File.ReadAllLines("input.txt");
+            var crypt = new XMAS(input);
+            var output = crypt.Hack(25);
+            Console.WriteLine(output);
         }
     }
 }
