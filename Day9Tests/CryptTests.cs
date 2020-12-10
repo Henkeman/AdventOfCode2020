@@ -8,7 +8,7 @@ namespace Day9Tests
         XMAS xmas;
 
         [Test]
-        public void Test1()
+        public void Part1()
         {
             // Arrange
             var input = new string[]
@@ -41,6 +41,43 @@ namespace Day9Tests
 
             // Assert
             Assert.AreEqual(127, actual);
+        }
+
+        [Test]
+        public void Part2()
+        {
+            // Arrange
+            var input = new string[]
+            {
+                "35",
+                "20",
+                "15",
+                "25",
+                "47",
+                "40",
+                "62",
+                "55",
+                "65",
+                "95",
+                "102",
+                "117",
+                "150",
+                "182",
+                "127",
+                "219",
+                "299",
+                "277",
+                "309",
+                "576"
+            };
+            xmas = new XMAS(input);
+
+            // Act
+            var hack = xmas.Hack(5);
+            var actual = xmas.Hack2(hack);
+
+            // Assert
+            Assert.AreEqual(62, actual);
         }
     }
 }

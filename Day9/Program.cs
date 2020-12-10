@@ -9,7 +9,8 @@ namespace Day9
         {
             var input = File.ReadAllLines("input.txt");
             var crypt = new XMAS(input);
-            var output = crypt.Hack(25);
+            var target = crypt.Hack(25);
+            var output = crypt.Hack2(target);
             Console.WriteLine(output);
         }
     }
