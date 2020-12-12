@@ -31,7 +31,6 @@ namespace Day10.Tests
             // Assert
             Assert.AreEqual(35, actual);
         }
-
         [Test]
         public void Part1_Example2_Should_Be_220()
         {

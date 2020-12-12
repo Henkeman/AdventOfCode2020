@@ -8,8 +8,7 @@ namespace Day10
         static void Main(string[] args)
         {
             var inputs = File.ReadAllLines("input.txt");
-            var adapterBag = new AdapterBag(inputs);
-            var count = adapterBag.CountArrangements();
+            var count = new AdapterBag(inputs).CountArrangements();
 
             Console.WriteLine(count);
         }
