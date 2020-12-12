@@ -9,8 +9,9 @@ namespace Day10
     public class AdapterBag
     {
         public int[] Adapters { get; set; }
-        public AdapterBag(string[] inputs)
+        public AdapterBag(IEnumerable<string> inputs)
         {
+            inputs = inputs.Append("0");
             Adapters = inputs.Select(s => Int32.Parse(s)).OrderBy(i => i).ToArray();
         }
 
@@ -18,9 +19,9 @@ namespace Day10
         {
             var steps = new Dictionary<int, int>();
 
-            for (int i = 0; i < Adapters.Length; i++)
+            for (int i = 1; i < Adapters.Length; i++)
             {
-                var previous = i > 0 ? Adapters[i - 1] : 0;
+                var previous = Adapters[i - 1];
                 var step = Adapters[i] - previous;
 
                 if (!steps.TryAdd(step, 1))
@@ -32,6 +33,36 @@ namespace Day10
             steps[3]++; // Built in adapter
 
             return steps;
+        }
+        
+
+        public long CountArrangements(int pos = 0, Dictionary<int, long> cache = null)
+        {
+            if (cache == null)
+            {
+                cache = new Dictionary<int, long>();
+            }
+
+            long result = 0;
+
+            if (pos == Adapters.Length -1)
+                return 1; // reached the end
+            if (cache.TryGetValue(pos, out result)) // found in cache
+            {
+                return result;
+            }
+
+            for (int i = pos + 1; i < Adapters.Length; i++)
+            {
+                if (Adapters[i] - Adapters[pos] <= 3)
+                {
+                    result += CountArrangements(i, cache);
+                }
+            }
+
+            cache.Add(pos, result);
+
+            return cache[pos];
         }
     }
 }

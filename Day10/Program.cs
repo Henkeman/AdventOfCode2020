@@ -9,9 +9,9 @@ namespace Day10
         {
             var inputs = File.ReadAllLines("input.txt");
             var adapterBag = new AdapterBag(inputs);
-            var steps = adapterBag.CountSteps();
+            var count = adapterBag.CountArrangements();
 
-            Console.WriteLine(steps[1] * steps[3]);
+            Console.WriteLine(count);
         }
     }
 }
