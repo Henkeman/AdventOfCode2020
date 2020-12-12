@@ -1,7 +1,7 @@
 using NUnit.Framework;
-using Day7;
+using Day07;
 
-namespace Day7Tests
+namespace Day07.Tests
 {
     public class BagFinderTests
     {

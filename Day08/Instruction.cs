@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Day8
+namespace Day08
 {    public class Instruction
     {
         public string Operation { get; set; }

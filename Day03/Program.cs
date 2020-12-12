@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace Day3
+namespace Day03
 {
     class Program
     {

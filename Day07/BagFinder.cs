@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Day7
+namespace Day07
 {
     public class BagFinder
     {

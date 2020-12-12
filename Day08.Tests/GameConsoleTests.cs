@@ -1,7 +1,7 @@
-using Day8;
+using Day08;
 using NUnit.Framework;
 
-namespace Day8Tests
+namespace Day08.Tests
 {
     public class GameConsoleTests
     {

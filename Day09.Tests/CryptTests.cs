@@ -1,7 +1,7 @@
-using Day9;
+using Day09;
 using NUnit.Framework;
 
-namespace Day9Tests
+namespace Day09.Tests
 {
     public class CryptTests
     {
