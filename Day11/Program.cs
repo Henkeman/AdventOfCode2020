@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace Day11
 {
@@ -6,7 +7,7 @@ namespace Day11
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var inputs = File.ReadAllLines("input.txt");
         }
     }
 }
