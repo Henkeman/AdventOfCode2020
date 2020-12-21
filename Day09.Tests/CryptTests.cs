@@ -1,5 +1,6 @@
 using Day09;
 using NUnit.Framework;
+using Shouldly;
 
 namespace Day09.Tests
 {
@@ -40,7 +41,7 @@ namespace Day09.Tests
             var actual = xmas.Hack(5);
 
             // Assert
-            Assert.AreEqual(127, actual);
+            actual.ShouldBe(127);
         }
 
         [Test]
@@ -77,7 +78,7 @@ namespace Day09.Tests
             var actual = xmas.Hack2(hack);
 
             // Assert
-            Assert.AreEqual(62, actual);
+            actual.ShouldBe(62);
         }
     }
 }

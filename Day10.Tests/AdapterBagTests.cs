@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using Shouldly;
 
 namespace Day10.Tests
 {
@@ -29,7 +30,7 @@ namespace Day10.Tests
             var actual = steps[1] * steps[3];
 
             // Assert
-            Assert.AreEqual(35, actual);
+            actual.ShouldBe(35);
         }
         [Test]
         public void Part1_Example2_Should_Be_220()
@@ -74,7 +75,7 @@ namespace Day10.Tests
             var actual = steps[1] * steps[3];
 
             // Assert
-            Assert.AreEqual(220, actual);
+            actual.ShouldBe(220);
         }
         [Test]
         public void Part2_Example1_Arrangements_Should_Be_8()
@@ -98,7 +99,7 @@ namespace Day10.Tests
             var actual = adapterBag.CountArrangements();
 
             // Assert
-            Assert.AreEqual(8, actual);
+            actual.ShouldBe(8);
         }
         [Test]
         public void Part2_Example2_Arrangements_Should_Be_19208()
@@ -142,7 +143,7 @@ namespace Day10.Tests
             var actual = adapterBag.CountArrangements();
 
             // Assert
-            Assert.AreEqual(19208, actual);
+            actual.ShouldBe(19208);
         }
     }
 }

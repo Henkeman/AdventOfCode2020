@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using Day07;
+using Shouldly;
 
 namespace Day07.Tests
 {
@@ -26,7 +27,7 @@ namespace Day07.Tests
             var actual = bagFinder.CountInAllBags("shiny gold");
 
             //Assert
-            Assert.AreEqual(4, actual);
+            actual.ShouldBe(4);
         }
         [Test]
         public void Part2_ShinyGoldBag_Contain_126()
@@ -47,7 +48,7 @@ namespace Day07.Tests
             actual--; // don't count the shiny gold bag...
             //Assert
 
-            Assert.AreEqual(126, actual);
+            actual.ShouldBe(126);
         }
 
         [Test]
@@ -69,7 +70,7 @@ namespace Day07.Tests
             actual--; // don't count the dark blue bag...
             //Assert
 
-            Assert.AreEqual(2, actual);
+            actual.ShouldBe(2);
         }
     }
 }

@@ -1,5 +1,6 @@
 using Day08;
 using NUnit.Framework;
+using Shouldly;
 
 namespace Day08.Tests
 {
@@ -35,7 +36,7 @@ namespace Day08.Tests
 
             var actual = gameConsole.Accumulator;
             // Assert
-            Assert.AreEqual(5, actual);
+            actual.ShouldBe(5);
         }
 
         [Test]
@@ -48,7 +49,7 @@ namespace Day08.Tests
 
             var actual = gameConsole.Accumulator;
             // Assert
-            Assert.AreEqual(8, actual);
+            actual.ShouldBe(8);
         }
     }
 }
