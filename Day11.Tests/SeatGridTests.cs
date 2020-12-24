@@ -1,11 +1,13 @@
 using NUnit.Framework;
+using Shouldly;
+using System.Linq;
 
 namespace Day11.Tests
 {
-    public class Tests
+    public class SeatGridTests
     {
         [Test]
-        public void Test1()
+        public void Should_Be_37_Full_Seats()
         {
             var input = new string[] {
                 "L.LL.LL.LL",
@@ -18,7 +20,10 @@ namespace Day11.Tests
                 "LLLLLLLLLL",
                 "L.LLLLLL.L",
                 "L.LLLLL.LL" };
-            Assert.Pass();
+            var seatGrid = new SeatGrid(input);
+            seatGrid.RunAllRounds();
+
+            seatGrid.CountFullSeats(seatGrid.Grids.Last()).ShouldBe(37);
         }
     }
 }
